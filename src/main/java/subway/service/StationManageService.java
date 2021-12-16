@@ -25,7 +25,7 @@ public class StationManageService {
         return stationRepository.stations();
     }
 
-    public void registerStation(String name) {
+    public void addStation(String name) {
         while (true) {
             try {
                 checkValidStationName(name);
@@ -34,6 +34,11 @@ public class StationManageService {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void deleteStation(String name) {
+        stationRepository.deleteStation(name);
+        // 노선들에서도 역 삭제해야 함
     }
 
 

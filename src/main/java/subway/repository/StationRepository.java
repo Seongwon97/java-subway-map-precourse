@@ -23,7 +23,9 @@ public class StationRepository {
     }
 
     public void addStation(Station station) {
-        isDuplicate(station);
+        if (hasStation(station)) {
+            throw new IllegalArgumentException("[ERROR] 중복된 역이 이미 존재합니다.");
+        }
         stations.add(station);
     }
 
@@ -31,9 +33,12 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-    private void isDuplicate(Station station) {
+    public boolean hasStation(Station station) {
         if (stations.contains(station)) {
-            throw new IllegalArgumentException("[ERROR] 중복된 역이 이미 존재합니다.");
+            return true;
         }
+        return false;
     }
+
+
 }
