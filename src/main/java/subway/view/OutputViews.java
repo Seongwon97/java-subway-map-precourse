@@ -60,4 +60,19 @@ public class OutputViews {
         lines.stream().forEach(line -> System.out.println(line));
     }
 
+    public static void printManageSection() {
+        System.out.println("## 구간 관리 화면\n" +
+                "1. 구간 등록\n" +
+                "2. 구간 삭제\n" +
+                "B. 돌아가기");
+    }
+
+    public static void printSectionEnroll() {
+        System.out.println("[INFO] 구간이 등록되었습니다.");
+    }
+
+    public static void printSectionDelete() {
+        System.out.println("[INFO] 구간이 삭제되었습니다.");
+    }
+
 }

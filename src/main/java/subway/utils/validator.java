@@ -27,4 +27,12 @@ public class validator {
             throw new IllegalArgumentException(ERROR_INVALID_LENGTH);
         }
     }
+
+    public static int isDigit(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_NOT_INTEGER);
+        }
+    }
 }

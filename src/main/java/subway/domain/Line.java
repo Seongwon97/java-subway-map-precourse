@@ -21,14 +21,19 @@ public class Line {
     }
 
     public void addStation(String name, int position) {
-        if (hasStation(name)) {
-            throw new IllegalArgumentException("[ERROR] 노선에 중복된 이름이 존재합니다.");
-        }
         stationList.addStation(name, position);
     }
 
     public void addInitStation(String name) {
         stationList.addStationInit(name);
+    }
+
+    public int getStationSize() {
+        return stationList.numOfStation();
+    }
+
+    public void deleteStation(String station) {
+        stationList.removeStation(station);
     }
 
     @Override

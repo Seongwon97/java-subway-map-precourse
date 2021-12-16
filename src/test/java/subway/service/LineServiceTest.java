@@ -23,10 +23,10 @@ class LineServiceTest {
                 .forEach(line -> System.out.println(line));
     }
 
-    @Test
-    public void addLine() {
-        lineService.addLine("5호선");
-    }
+//    @Test
+//    public void addLine() {
+//        lineService.addLine("5호선");
+//    }
 
     @Test
     public void deleteLine() {

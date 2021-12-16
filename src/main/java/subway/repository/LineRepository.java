@@ -39,6 +39,10 @@ public class LineRepository {
         lines.get(findStationIndex(line)).addInitStation(station);
     }
 
+    public void addStation(String lineName, String stationName, int order) {
+        lines.get(findStationIndex(lineName)).addStation(stationName, order - 1);
+    }
+
     private int findStationIndex(String lineName) {
         return lines().indexOf(new Line(lineName));
     }
@@ -48,5 +52,17 @@ public class LineRepository {
             return true;
         }
         return false;
+    }
+
+    public int getLineStationSize(String lineName) {
+        return lines.get(findStationIndex(lineName)).getStationSize();
+    }
+
+    public boolean hasLineOfStation(String lineName, String stationName) {
+        return lines.get(findStationIndex(lineName)).hasStation(stationName);
+    }
+
+    public void deleteStation(String lineName, String stationName) {
+        lines.get(findStationIndex(lineName)).deleteStation(stationName);
     }
 }

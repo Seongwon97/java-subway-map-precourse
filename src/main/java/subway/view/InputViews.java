@@ -37,4 +37,29 @@ public class InputViews {
         System.out.println("## 삭제할 노선 이름을 입력하세요.");
         return scanner.nextLine();
     }
+
+    public static String getEnrollSectionLine() {
+        System.out.println("## 노선을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public static String getEnrollSectionStation() {
+        System.out.println("## 역이름을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public static String getEnrollSectionOrder() {
+        System.out.println("## 순서를 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public static String getDeleteSectionLine() {
+        System.out.println("## 삭제할 구간의 노선을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public static String getDeleteSectionStation() {
+        System.out.println("## 삭제할 구간의 역을 입력하세요.");
+        return scanner.nextLine();
+    }
 }

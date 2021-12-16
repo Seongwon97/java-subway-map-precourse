@@ -11,4 +11,8 @@ public class ExceptionMessage {
     public static final String ERROR_NOT_AVAILABLE_LINE = "[ERROR] 해당 노선은 존재하지 않습니다.";
     public static final String ERROR_DUPLICATE_LINE = "[ERROR] 중복된 노선이 이미 존재합니다.";
     public static final String ERROR_DUPLICATE_LINE_STATION = "[ERROR] 상행선과 하행선의 종점이 같습니다.";
+
+    public static final String ERROR_NOT_INTEGER = "[ERROR] 입력하신 값은 숫자가 아닙니다.";
+    public static final String ERROR_INVALID_ORDER = "[ERROR] 입력하신 구간 순서는 잘못된 순서입니다.";
+    public static final String ERROR_SECTION_DUPLICATED_STATION = "[ERROR] 노선에 중복된 이름이 존재합니다.";
 }
