@@ -54,6 +54,15 @@ public class LineRepository {
         return lines.get(findStationIndex(lineName)).getStationSize();
     }
 
+    public boolean hasStation(String stationName) {
+        for (Line line : lines) {
+            if (hasLineOfStation(line.getName(), stationName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean hasLineOfStation(String lineName, String stationName) {
         return lines.get(findStationIndex(lineName)).hasStation(stationName);
     }

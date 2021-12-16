@@ -1,16 +1,19 @@
 package subway.service;
 
 import subway.domain.Station;
+import subway.repository.LineRepository;
 import subway.repository.StationRepository;
 
 import java.util.List;
 
 import static subway.utils.ExceptionMessage.ERROR_NOT_AVAILABLE_STATION;
+import static subway.utils.ExceptionMessage.ERROR_STATION_IN_LINE;
 import static subway.utils.validator.checkValidName;
 
 public class StationService {
 
     private static final StationRepository stationRepository = StationRepository.getInstance();
+    private static final LineRepository lineRepository = LineRepository.getInstance();
 
     public void init() {
         stationRepository.addStation(new Station("교대역"));
@@ -35,7 +38,9 @@ public class StationService {
         if (!stationRepository.deleteStation(name)) {
             throw new IllegalArgumentException(ERROR_NOT_AVAILABLE_STATION);
         }
-        // 노선들에서도 역 삭제해야 함
+        if (lineRepository.hasStation(name)) {
+            throw new IllegalArgumentException(ERROR_STATION_IN_LINE);
+        }
     }
 
 
