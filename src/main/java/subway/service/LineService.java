@@ -7,6 +7,7 @@ import subway.repository.StationRepository;
 
 import java.util.List;
 
+import static subway.utils.ExceptionMessage.ERROR_NOT_AVAILABLE_LINE;
 import static subway.utils.validator.checkValidName;
 
 public class LineService {
@@ -49,7 +50,7 @@ public class LineService {
 
     public void deleteLine(String name) {
         if (!lineRepository.deleteLineByName(name)) {
-            throw new IllegalArgumentException("[ERROR] 해당 노선은 존재하지 않습니다.");
+            throw new IllegalArgumentException(ERROR_NOT_AVAILABLE_LINE);
         }
     }
 

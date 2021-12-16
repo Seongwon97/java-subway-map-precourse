@@ -1,5 +1,7 @@
 package subway.utils;
 
+import static subway.utils.ExceptionMessage.*;
+
 public class validator {
     public static void checkValidName(String name) {
         isEmpty(name);
@@ -9,20 +11,20 @@ public class validator {
 
     private static void isEmpty(String name) {
         if (name.length() == 0) {
-            throw new IllegalArgumentException("[ERROR] 입력된 값이 없습니다.");
+            throw new IllegalArgumentException(ERROR_NO_INPUT);
         }
     }
 
     private static void isFirstBlank(String name) {
         if (name.charAt(0) == ' ') {
-            throw new IllegalArgumentException("[ERROR] 입력 앞에 공백이 있습니다.");
+            throw new IllegalArgumentException(ERROR_HAVE_FIRST_BLANK);
         }
     }
 
 
     private static void isValidLength(String name) {
         if (name.length() < 2) {
-            throw new IllegalArgumentException("[ERROR] 이름은 2글자 이상이어야 합니다.");
+            throw new IllegalArgumentException(ERROR_INVALID_LENGTH);
         }
     }
 }

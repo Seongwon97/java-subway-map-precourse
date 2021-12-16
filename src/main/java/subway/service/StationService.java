@@ -5,6 +5,7 @@ import subway.repository.StationRepository;
 
 import java.util.List;
 
+import static subway.utils.ExceptionMessage.ERROR_NOT_AVAILABLE_STATION;
 import static subway.utils.validator.checkValidName;
 
 public class StationService {
@@ -32,7 +33,7 @@ public class StationService {
 
     public void deleteStation(String name) {
         if (!stationRepository.deleteStation(name)) {
-            throw new IllegalArgumentException("[ERROR] 해당 역은 존재하지 않습니다.");
+            throw new IllegalArgumentException(ERROR_NOT_AVAILABLE_STATION);
         }
         // 노선들에서도 역 삭제해야 함
     }
