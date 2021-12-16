@@ -9,7 +9,7 @@ import static subway.utils.validator.checkValidStationName;
 
 public class StationManageService {
 
-    private static StationRepository stationRepository = StationRepository.getInstance();
+    private static final StationRepository stationRepository = StationRepository.getInstance();
 
     public void init() {
         stationRepository.addStation(new Station("교대역"));

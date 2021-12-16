@@ -19,15 +19,24 @@ public class LineRepository {
         return instance;
     }
 
-    public static List<Line> lines() {
+    public List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
 
-    public static void addLine(Line line) {
+    public void addLine(Line line) {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
+    public boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
+
+    public void addInitStation(String line, String station) {
+        lines.get(findStationIndex(line)).addInitStation(station);
+    }
+
+    private int findStationIndex(String lineName) {
+        return lines().indexOf(new Line(lineName));
+    }
+
 }
