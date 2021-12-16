@@ -1,8 +1,13 @@
 package subway.service;
 
 import subway.domain.Line;
+import subway.domain.Station;
 import subway.repository.LineRepository;
 import subway.repository.StationRepository;
+
+import java.util.List;
+
+import static subway.utils.validator.checkValidName;
 
 public class LineService {
     private static final LineRepository lineRepository = LineRepository.getInstance();
@@ -35,4 +40,24 @@ public class LineService {
         lineRepository.addInitStation("신분당선", "양재역");
         lineRepository.addInitStation("신분당선", "양재시민의숲역");
     }
+
+    public void addLine(String name) {
+        while (true) {
+            try {
+                checkValidName(name);
+                lineRepository.addLine(new Line(name));
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public void deleteLine(String name) {
+        lineRepository.deleteLineByName(name);
+    }
+
+    public List<Line> getLineList() {
+        return lineRepository.lines();
+    }
+
 }

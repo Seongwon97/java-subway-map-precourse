@@ -1,7 +1,7 @@
 package subway.utils;
 
 public class validator {
-    public static void checkValidStationName(String name) {
+    public static void checkValidName(String name) {
         isEmpty(name);
         isFirstBlank(name);
         isValidLength(name);

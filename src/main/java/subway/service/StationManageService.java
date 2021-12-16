@@ -5,7 +5,7 @@ import subway.repository.StationRepository;
 
 import java.util.List;
 
-import static subway.utils.validator.checkValidStationName;
+import static subway.utils.validator.checkValidName;
 
 public class StationManageService {
 
@@ -28,7 +28,7 @@ public class StationManageService {
     public void addStation(String name) {
         while (true) {
             try {
-                checkValidStationName(name);
+                checkValidName(name);
                 stationRepository.addStation(new Station(name));
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
