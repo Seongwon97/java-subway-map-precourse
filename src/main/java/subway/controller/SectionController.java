@@ -3,6 +3,8 @@ package subway.controller;
 import subway.service.SectionManageService;
 
 import static subway.view.InputViews.*;
+import static subway.view.OutputViews.printSectionDelete;
+import static subway.view.OutputViews.printSectionEnroll;
 
 
 public class SectionController {
@@ -12,7 +14,8 @@ public class SectionController {
         String lineName = getEnrollLineName();
         String stationName = getEnrollStationName(lineName);
         int order = getOrder(lineName);
-        sectionService.enrollSection(lineName,stationName, order);
+        sectionService.enrollSection(lineName, stationName, order);
+        printSectionEnroll();
     }
 
     public String getEnrollLineName() {
@@ -55,6 +58,7 @@ public class SectionController {
         String lineName = getDeleteLineName();
         String stationName = getDeleteStationName(lineName);
         sectionService.deleteSection(lineName, stationName);
+        printSectionDelete();
     }
 
     public String getDeleteLineName() {
