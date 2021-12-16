@@ -22,6 +22,7 @@ public class OutputViews {
                 "3. 역 조회\n" +
                 "B. 돌아가기\n");
     }
+
     public static void printAddStationResult() {
         System.out.println("\n[INFO] 지하철 역이 등록되었습니다.");
     }
@@ -73,7 +74,7 @@ public class OutputViews {
 
     public static void printSubwatInfo(List<Line> lines) {
         System.out.println("\n## 지하철 노선도");
-        for (Line line: lines) {
+        for (Line line : lines) {
             System.out.println(line);
             System.out.println("---");
             line.getStationInfo().stream().forEach(station -> System.out.println(station));

@@ -1,8 +1,5 @@
 package subway.view;
 
-import subway.domain.Station;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class InputViews {

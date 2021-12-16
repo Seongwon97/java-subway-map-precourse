@@ -1,9 +1,7 @@
 package subway.controller;
 
-import subway.domain.Line;
 import subway.service.LineService;
 
-import static subway.utils.validator.checkValidName;
 import static subway.view.InputViews.*;
 import static subway.view.OutputViews.*;
 

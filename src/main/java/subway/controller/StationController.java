@@ -1,9 +1,7 @@
 package subway.controller;
 
-import subway.domain.Station;
 import subway.service.StationService;
 
-import static subway.utils.validator.checkValidName;
 import static subway.view.InputViews.getAddStation;
 import static subway.view.InputViews.getDeleteStation;
 import static subway.view.OutputViews.*;
