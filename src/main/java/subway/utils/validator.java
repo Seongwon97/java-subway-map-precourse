@@ -21,7 +21,7 @@ public class validator {
 
 
     private static void isValidLength(String name) {
-        if (name.length() >= 2) {
+        if (name.length() < 2) {
             throw new IllegalArgumentException("[ERROR] 이름은 2글자 이상이어야 합니다.");
         }
     }

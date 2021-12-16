@@ -8,6 +8,7 @@ public class Line {
 
     public Line(String name) {
         this.name = name;
+        stationList = new StationOfLine();
     }
 
     public String getName() {
@@ -43,5 +44,10 @@ public class Line {
             return false;
 
         return this.name.equals(((Line) obj).getName());
+    }
+
+    @Override
+    public String toString() {
+        return "[INFO] " + this.name;
     }
 }

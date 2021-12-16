@@ -42,10 +42,12 @@ public class LineService {
     }
 
     public void addLine(String name) {
-        while (true) {
+        boolean flag = false;
+        while (!flag) {
             try {
                 checkValidName(name);
                 lineRepository.addLine(new Line(name));
+                flag = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

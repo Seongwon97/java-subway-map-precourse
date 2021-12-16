@@ -1,13 +1,14 @@
 package subway.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class StationOfLine {
     private List<Station> stationOfLine;
 
-    public StationOfLine(List<Station> stationOfLine) {
-        this.stationOfLine =stationOfLine;
+    public StationOfLine() {
+        stationOfLine = new ArrayList<>();
     }
 
     public boolean hasStation(String name) {
