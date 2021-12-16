@@ -14,19 +14,19 @@ public class StationRepository {
     private StationRepository() {
     }
 
-    public StationRepository getInstance() {
+    public static StationRepository getInstance() {
         return instance;
     }
 
-    public static List<Station> stations() {
+    public List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
 
-    public static void addStation(Station station) {
+    public void addStation(Station station) {
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
+    public boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 }
