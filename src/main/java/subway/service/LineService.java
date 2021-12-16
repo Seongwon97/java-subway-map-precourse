@@ -42,20 +42,15 @@ public class LineService {
     }
 
     public void addLine(String name) {
-        boolean flag = false;
-        while (!flag) {
-            try {
-                checkValidName(name);
-                lineRepository.addLine(new Line(name));
-                flag = true;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        checkValidName(name);
+        lineRepository.addLine(new Line(name));
+        // 상행 하행 종점 입력 기능 넣어야 함
     }
 
     public void deleteLine(String name) {
-        lineRepository.deleteLineByName(name);
+        if (!lineRepository.deleteLineByName(name)) {
+            throw new IllegalArgumentException("[ERROR] 해당 노선은 존재하지 않습니다.");
+        }
     }
 
     public List<Line> getLineList() {

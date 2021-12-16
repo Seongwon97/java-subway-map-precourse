@@ -7,7 +7,7 @@ import java.util.List;
 
 import static subway.utils.validator.checkValidName;
 
-public class StationManageService {
+public class StationService {
 
     private static final StationRepository stationRepository = StationRepository.getInstance();
 
@@ -26,18 +26,14 @@ public class StationManageService {
     }
 
     public void addStation(String name) {
-        while (true) {
-            try {
-                checkValidName(name);
-                stationRepository.addStation(new Station(name));
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        checkValidName(name);
+        stationRepository.addStation(new Station(name));
     }
 
     public void deleteStation(String name) {
-        stationRepository.deleteStation(name);
+        if (!stationRepository.deleteStation(name)) {
+            throw new IllegalArgumentException("[ERROR] 해당 역은 존재하지 않습니다.");
+        }
         // 노선들에서도 역 삭제해야 함
     }
 
