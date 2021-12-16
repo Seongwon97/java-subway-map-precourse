@@ -5,8 +5,7 @@ import subway.service.LineService;
 
 import static subway.utils.validator.checkValidName;
 import static subway.view.InputViews.*;
-import static subway.view.OutputViews.printAddStationResult;
-import static subway.view.OutputViews.printLineList;
+import static subway.view.OutputViews.*;
 
 public class LineController {
     static LineService lineService = new LineService();
@@ -70,5 +69,9 @@ public class LineController {
 
     public void lineList() {
         printLineList(lineService.getLineList());
+    }
+
+    public void printAllInfo() {
+        printSubwatInfo(lineService.getLineList());
     }
 }

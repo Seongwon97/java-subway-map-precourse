@@ -18,9 +18,18 @@ public class SectionManageService {
         }
     }
 
-    public void validStationName(String stationName) {
+    public void validEnrollStationName(String stationName) {
         if (!stationRepository.hasStation(new Station(stationName))) {
             throw new IllegalArgumentException(ERROR_NOT_AVAILABLE_STATION);
+        }
+    }
+
+    public void validDeleteStationName(String lineName, String stationName) {
+        if (!stationRepository.hasStation(new Station(stationName))) {
+            throw new IllegalArgumentException(ERROR_NOT_AVAILABLE_STATION);
+        }
+        if (!lineRepository.hasLineOfStation(lineName, stationName)) {
+            throw new IllegalArgumentException(ERROR_SECTION_NO_STATION);
         }
     }
 
@@ -32,7 +41,7 @@ public class SectionManageService {
 
     public int validOrder(String input, String lineName) {
         int order = isDigit(input);
-        if (1 > order && order < lineRepository.getLineStationSize(lineName)) {
+        if (1 > order || order > lineRepository.getLineStationSize(lineName) + 1) {
             throw new IllegalArgumentException(ERROR_INVALID_ORDER);
         }
         return order;
@@ -43,7 +52,7 @@ public class SectionManageService {
     }
 
     public void deleteSection(String line, String station) {
-       lineRepository.deleteStation(line, station);
+        lineRepository.deleteStation(line, station);
     }
 
 

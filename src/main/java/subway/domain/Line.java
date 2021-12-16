@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Line {
@@ -34,6 +35,10 @@ public class Line {
 
     public void deleteStation(String station) {
         stationList.removeStation(station);
+    }
+
+    public List<Station> getStationInfo() {
+        return stationList.getStationList();
     }
 
     @Override

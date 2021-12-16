@@ -2,6 +2,7 @@ package subway.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class StationOfLine {
@@ -9,6 +10,10 @@ public class StationOfLine {
 
     public StationOfLine() {
         stationOfLine = new ArrayList<>();
+    }
+
+    public List<Station> getStationList() {
+        return Collections.unmodifiableList(stationOfLine);
     }
 
     public boolean hasStation(String name) {

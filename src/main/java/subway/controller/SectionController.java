@@ -31,7 +31,7 @@ public class SectionController {
         while (true) {
             try {
                 String stationName = getEnrollSectionStation();
-                sectionService.validStationName(stationName);
+                sectionService.validEnrollStationName(stationName);
                 sectionService.validDuplicateStation(lineName, stationName);
                 return stationName;
             } catch (IllegalArgumentException e) {
@@ -73,7 +73,7 @@ public class SectionController {
         while (true) {
             try {
                 String stationName = getDeleteSectionStation();
-                sectionService.validStationName(stationName);
+                sectionService.validDeleteStationName(lineName, stationName);
                 return stationName;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
