@@ -10,4 +10,5 @@ public class ExceptionMessage {
 
     public static final String ERROR_NOT_AVAILABLE_LINE = "[ERROR] 해당 노선은 존재하지 않습니다.";
     public static final String ERROR_DUPLICATE_LINE = "[ERROR] 중복된 노선이 이미 존재합니다.";
+    public static final String ERROR_DUPLICATE_LINE_STATION = "[ERROR] 상행선과 하행선의 종점이 같습니다.";
 }

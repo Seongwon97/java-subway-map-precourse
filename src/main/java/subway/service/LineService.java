@@ -7,7 +7,7 @@ import subway.repository.StationRepository;
 
 import java.util.List;
 
-import static subway.utils.ExceptionMessage.ERROR_NOT_AVAILABLE_LINE;
+import static subway.utils.ExceptionMessage.*;
 import static subway.utils.validator.checkValidName;
 
 public class LineService {
@@ -42,9 +42,10 @@ public class LineService {
         lineRepository.addInitStation("신분당선", "양재시민의숲역");
     }
 
-    public void addLine(String name) {
-        checkValidName(name);
+    public void addLine(String name, String firstStation, String secondStation) {
         lineRepository.addLine(new Line(name));
+        lineRepository.addInitStation(name, firstStation);
+        lineRepository.addInitStation(name, secondStation);
         // 상행 하행 종점 입력 기능 넣어야 함
     }
 
@@ -56,6 +57,28 @@ public class LineService {
 
     public List<Line> getLineList() {
         return lineRepository.lines();
+    }
+
+    public String validLineName(String name) {
+        checkValidName(name);
+        if (lineRepository.hasLine(new Line(name))) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE_LINE);
+        }
+        return name;
+    }
+
+    public void validFirstStation(String name) {
+        if (!stationRepository.hasStation(new Station(name))) {
+            throw new IllegalArgumentException(ERROR_NOT_AVAILABLE_STATION);
+        }
+        checkValidName(name);
+    }
+
+    public void validSecondStation(String name1, String name2) {
+        validFirstStation(name1);
+        if (name1.equals(name2)) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE_LINE_STATION);
+        }
     }
 
 }

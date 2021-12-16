@@ -1,11 +1,15 @@
 package subway.repository;
 
 import subway.domain.Line;
+import subway.domain.Station;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import static subway.utils.ExceptionMessage.ERROR_DUPLICATE_LINE;
+import static subway.utils.ExceptionMessage.ERROR_DUPLICATE_STATION;
 
 public class LineRepository {
     private static final LineRepository instance = new LineRepository();
@@ -39,4 +43,10 @@ public class LineRepository {
         return lines().indexOf(new Line(lineName));
     }
 
+    public boolean hasLine(Line line) {
+        if (lines.contains(line)) {
+            return true;
+        }
+        return false;
+    }
 }

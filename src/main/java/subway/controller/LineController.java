@@ -3,6 +3,7 @@ package subway.controller;
 import subway.domain.Line;
 import subway.service.LineService;
 
+import static subway.utils.validator.checkValidName;
 import static subway.view.InputViews.*;
 import static subway.view.OutputViews.printAddStationResult;
 import static subway.view.OutputViews.printLineList;
@@ -18,13 +19,40 @@ public class LineController {
         boolean flag = false;
         while (!flag) {
             try {
-                lineService.addLine(getAddLine());
+                String lineName = lineService.validLineName(getAddLineName());
+                String firstStation = getFirstStationName();
+                String secondStation = getSecondStationName(firstStation);
+                lineService.addLine(lineName, firstStation, secondStation);
                 flag = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
         printAddStationResult();
+    }
+
+    public String getFirstStationName() {
+        while (true) {
+            try {
+                String stationName = getFirstStation();
+                lineService.validFirstStation(stationName);
+                return stationName;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public String getSecondStationName(String firstStation) {
+        while (true) {
+            try {
+                String stationName = getSecondStation();
+                lineService.validSecondStation(stationName, firstStation);
+                return stationName;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public void deleteLine() {
